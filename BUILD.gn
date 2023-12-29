@@ -1,0 +1,46 @@
+# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+
+liburing_source = [
+    "//third_party/liburing/src/nolibc.c",
+    "//third_party/liburing/src/queue.c",
+    "//third_party/liburing/src/register.c",
+    "//third_party/liburing/src/setup.c",
+    "//third_party/liburing/src/syscall.c",
+]
+
+import("//build/ohos.gni")
+
+config("liburing_config") {
+    visibility = [ ":*" ]
+
+    include_dirs = [
+        "//third_party/liburing",
+        "//third_party/liburing/src",
+        "//third_party/liburing/src/include",
+        "//third_party/liburing/src/include/liburing",
+        "//third_party/liburing/src/arch"
+        
+    ]
+}
+
+ohos_shared_library("liburing") {
+    configs = [ "//third_party/liburing:liburing_config" ]
+    sources = liburing_source
+    external_deps = [ "c_utils:utils" ]
+    subsystem_name = "thirdparty"
+    part_name = "liburing"
+    output_name = "liburing"
+}
