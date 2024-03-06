@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Copyright (C) 2023-2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,34 +13,51 @@
 
 import("//build/ohos.gni")
 
+src_path = "//third_party/liburing"
+out_dir = root_out_dir + "/third_party_liburing"
+code_dir = out_dir + "/liburing"
+
 liburing_source = [
-    "//third_party/liburing/src/nolibc.c",
-    "//third_party/liburing/src/queue.c",
-    "//third_party/liburing/src/register.c",
-    "//third_party/liburing/src/setup.c",
-    "//third_party/liburing/src/syscall.c",
+  "src/queue.c",
+  "src/register.c",
+  "src/setup.c",
+  "src/syscall.c",
 ]
 
-import("//build/ohos.gni")
-
 config("liburing_config") {
-    visibility = [ ":*" ]
+  visibility = [ ":*" ]
 
-    include_dirs = [
-        "//third_party/liburing",
-        "//third_party/liburing/src",
-        "//third_party/liburing/src/include",
-        "//third_party/liburing/src/include/liburing",
-        "//third_party/liburing/src/arch"
-        
-    ]
+  include_dirs = [
+    "$code_dir",
+    "$code_dir/src",
+    "$code_dir/src/include",
+    "$code_dir/src/include/liburing",
+    "$code_dir/src/arch",
+  ]
+}
+
+action("liburing_configure") {
+  script = "install.sh"
+  args = [
+    rebase_path(src_path),
+    rebase_path(out_dir),
+  ]
+  inputs = [ src_path ]
+  outputs = []
+  foreach(src, liburing_source) {
+    outputs += [ "$code_dir/" + src ]
+  }
 }
 
 ohos_shared_library("liburing") {
-    configs = [ "//third_party/liburing:liburing_config" ]
-    sources = liburing_source
-    external_deps = [ "c_utils:utils" ]
-    subsystem_name = "thirdparty"
-    part_name = "liburing"
-    output_name = "liburing"
+  configs = [ "//third_party/liburing:liburing_config" ]
+  sources = []
+  foreach(src, liburing_source) {
+    sources += [ "$code_dir/" + src ]
+  }
+  deps = [ ":liburing_configure" ]
+  external_deps = [ "c_utils:utils" ]
+  subsystem_name = "thirdparty"
+  part_name = "liburing"
+  output_name = "liburing"
 }
