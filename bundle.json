@@ -22,7 +22,9 @@
         "rom": "",
         "ram": "",
         "deps": {
-            "components": [],
+            "components": [
+                "c_utils"
+            ],
             "third_party": []
         },
         "build": {
