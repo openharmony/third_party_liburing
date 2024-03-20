@@ -60,4 +60,5 @@ ohos_shared_library("liburing") {
   subsystem_name = "thirdparty"
   part_name = "liburing"
   output_name = "liburing"
+  license_file = "README.OpenSource"
 }
