@@ -1,7 +1,7 @@
 # liburing
 
 由于直接使用系统调用较为复杂，Jens Axboe 还提供了封装好的用户态库liburing，简化了io_uring的使用。
-o_uring库，libouling提供了设置和拆除io_ouling实例的帮助程序，以及为不需要（或不希望）处理完整内核端实现的应用程序提供简化的接口
+libouling提供了初始化和释放io_uring实例的帮助程序，以及为不需要（或不希望）处理完整内核端实现的应用程序提供简化的接口。
 
 ## 目录结构
 
@@ -16,11 +16,9 @@ test/                   #测试脚本代码
 
 ## OpenHarmony如何使用liburing
 
-liburing提供了以下基本助手来完成相同任务：
-struct io_uring ring;
-io_uring_queue_init(ENTRIES, &ring, 0);
-一旦应用程序使用io_uring实例完成，它只需调用：io_uring_queue_exit(&ring)。相关接口在src/include/liburing.h定义
-## 接口说明
+OpenHarmony中系统部件需要在BUILD.gn中引用liburing部件以使用liburing。
+
+## 使用liburing库开发步骤
 
 1. 初始化
    ```
@@ -57,14 +55,14 @@ io_uring_queue_init(ENTRIES, &ring, 0);
    static inline int io_uring_peek_cqe(struct io_uring *ring, struct io_uring_cqe **cqe_ptr);
    static inline int io_uring_wait_cqe(struct io_uring *ring, struct io_uring_cqe **cqe_ptr);
 
-    cqe_ptr    输出参数，是cqe指针变量的额地址
+    cqe_ptr    输出参数，是cqe指针变量的地址
     注意：io_uring_peek_cqe如果没有已完成的IO操作时，也会立即返回，cqe_ptr被置空；而io_uring_wait_cqe会阻塞线程，等待IO操作完成。
    ```
 6. 获取数据
    ```
    static inline void *io_uring_cqe_get_data(const struct io_uring_cqe *cqe);
    ```
-7. 清理完成时间
+7. 清理处理完成的结果
    ```
    static inline void io_uring_cqe_seen(struct io_uring *ring, struct io_uring_cqe *cqe);
    ```
