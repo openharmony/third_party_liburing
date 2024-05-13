@@ -23,28 +23,21 @@
         <licensefile>COPYING</licensefile>
         <policylist>
             <policy name="projectPolicy" desc="">
-            <filteritem type="compatibility" name="GPL-2.0+" path=".*" desc="Compile tool not runs target,running on host build environment only."/>
-            <filteritem type="compatibility" name="GPLStyleLicense" path=".*" desc="Compile tool not runs target,running on host build environment only."/>
-            <filteritem type="compatibility" name="GPL-2+" path=".*" desc=""/>
-            <filteritem type="compatibility" name="GPL-2.0-or-later" path=".*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc=""/>
-            <filteritem type="compatibility" name="GPL-2.0-or-later" path=".*" desc="Compile tool not runs target,running on host build environment only."/>
-            <filteritem type="compatibility" name="InvalidLicense" path=".*" desc="Compile tool not runs target,running on host build environment only."/>
+            <policyitem type="compatibility" name="GPLStyleLicense" path=".*" desc="Compile tool not runs target,running on host build environment only."/>
+            <policyitem type="compatibility" name="GPL-2.0-or-later" path=".*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter"
+                desc="Compile tool not runs target,running on host build environment only."/>
             </policy>
         </policylist>
 
 
         <filefilterlist>
+            <filefilter name="defaultFilter" desc="Files not to check">
+                <filteritem type="filename" name="*.spec" desc="spec file,can not add license head"/>
+                <filteritem type="filepath" name="man/io_uring_submit_and_get_events.3" desc="config file,can not add license head"/>
+                <filteritem type="filepath" name="debian/copyright" desc="copyright file,can not add license head"/>
+	        </filefilter>
             <filefilter name="defaultFilter" desc="Filters for compatibility,license header policies">
-            <filteritem type="filename" name="README.OpenSource"/>
-            <filteritem type="filename" name="README"/>
             <filteritem type="filename" name="COPYING"/>
-            <filteritem type="filename" name="README_zh.md"/>
-            <filteritem type="filename" name="BUILD.gn"/>
-            <filteritem type="filename" name="tests/BUILD.gn"/>
-            <filteritem type="filename" name="tests/conan/conanfile.py" desc=""/>
-            <filteritem type="filename" name="build.py" desc=""/>
-            <filteritem type="filename" name="conanfile.py" desc=""/>
-            <filteritem type="filename" name="tests/pkgconfig/pkgconfig.c" desc=""/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
