@@ -1,0 +1,9 @@
+{
+    "patches": [
+        {
+            "project":"filemanagement_file_api",
+            "path":"foundation/filemanagement/file_api",
+            "pr_url":"https://gitee.com/openharmony/filemanagement_file_api/pulls/702"
+        }
+    ]
+}
