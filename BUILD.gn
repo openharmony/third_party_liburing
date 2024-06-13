@@ -59,6 +59,8 @@ ohos_shared_library("liburing") {
   external_deps = [ "c_utils:utils" ]
   subsystem_name = "thirdparty"
   part_name = "liburing"
+  innerapi_tags = [ "platformsdk" ]
   output_name = "liburing"
+  output_extension = "so"
   license_file = "README.OpenSource"
 }

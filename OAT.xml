@@ -35,6 +35,7 @@
                 <filteritem type="filename" name="*.spec" desc="spec file,can not add license head"/>
                 <filteritem type="filepath" name="man/io_uring_submit_and_get_events.3" desc="config file,can not add license head"/>
                 <filteritem type="filepath" name="debian/copyright" desc="copyright file,can not add license head"/>
+                <filteritem type="filepath" name="install.sh" desc="compile build scripts, use Apache-2.0 license which is incompatible with GPL-2.0 license"/>
 	        </filefilter>
             <filefilter name="defaultFilter" desc="Filters for compatibility,license header policies">
             <filteritem type="filename" name="COPYING"/>
