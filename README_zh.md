@@ -18,6 +18,11 @@ test/                   #测试脚本代码
 
 OpenHarmony中系统部件需要在BUILD.gn中引用liburing部件以使用liburing。
 
+```
+// BUILD.gn
+external_deps += [ "liburing:liburing" ]
+```
+
 ## 使用liburing库开发步骤
 
 1. 初始化
