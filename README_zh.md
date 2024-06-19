@@ -75,3 +75,7 @@ external_deps += [ "liburing:liburing" ]
    ```
    extern void io_uring_queue_exit(struct io_uring *ring);
    ```
+
+## 相关仓<a name="section178mcpsimp"></a>
+
+- [**基础文件访问接口**](https://gitee.com/openharmony/filemanagement_file_api)
