@@ -2,7 +2,7 @@
     "name": "@ohos/liburing",
     "description": "liburing provides helpers to setup and teardown io_uring instances, and also a simplified interface for applications that don't need (or want) to deal with the full kernel side implementation.",
     "version": "2.3",
-    "license": "LGPL V2.1",
+    "license": "MIT License",
     "publishAs": "code-segment",
     "segment": {
         "destPath": "third_party/liburing"
