@@ -62,5 +62,4 @@ ohos_shared_library("liburing") {
   innerapi_tags = [ "platformsdk" ]
   output_name = "liburing"
   output_extension = "so"
-  license_file = "README.OpenSource"
 }
