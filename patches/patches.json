@@ -4,6 +4,11 @@
             "project":"filemanagement_file_api",
             "path":"foundation/filemanagement/file_api",
             "pr_url":"https://gitee.com/openharmony/filemanagement_file_api/pulls/702"
+        },
+        {
+            "project":"vendor_hihope",
+            "path":"vendor/hihope",
+            "pr_url":"https://gitee.com/openharmony/vendor_hihope/pulls/1301"
         }
     ]
 }
