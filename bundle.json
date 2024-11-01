@@ -28,7 +28,10 @@
             "third_party": []
         },
         "build": {
-            "sub_component": [],
+            "sub_component": [
+                "//third_party/liburing:liburing",
+                "//third_party/liburing:uring_test"
+            ],
             "inner_kits": [
                 {
                     "name": "//third_party/liburing:liburing",
