@@ -50,7 +50,7 @@ action("liburing_configure") {
 }
 
 ohos_shared_library("liburing") {
-  configs = [ "//third_party/liburing:liburing_config" ]
+  public_configs = [ ":liburing_config" ]
   sources = []
   foreach(src, liburing_source) {
     sources += [ "$code_dir/" + src ]
@@ -62,4 +62,36 @@ ohos_shared_library("liburing") {
   innerapi_tags = [ "platformsdk" ]
   output_name = "liburing"
   output_extension = "so"
+  install_images = [ "system" ]
+}
+
+## build for liburing test ##
+ohos_executable("liburing_example_io_uring") {
+  sources = [ "examples/io_uring-test.c" ]
+  configs = [ ":liburing_config" ]
+  deps = [ ":liburing" ]
+
+  install_enable = true
+  subsystem_name = "thirdparty"
+  part_name = "liburing"
+}
+
+ohos_executable("liburing_example_io_uring_close") {
+  sources = [
+    "examples/io_uring-close-test.c",
+  ]
+  include_dirs = [ "test" ]
+  configs = [ ":liburing_config" ]
+  deps = [ ":liburing" ]
+
+  install_enable = true
+  subsystem_name = "thirdparty"
+  part_name = "liburing"
+}
+
+group("uring_test") {
+  deps = [
+    ":liburing_example_io_uring",
+    ":liburing_example_io_uring_close",
+  ]
 }
