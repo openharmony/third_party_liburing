@@ -1,7 +1,7 @@
 [
     {
         "Name": "liburing",
-        "License": "MIT License",
+        "License": "MIT",
         "License File": "LICENSE",
         "Version Number": "2.7",
         "Owner": "mailto:maojingjing1@huawei.com",
