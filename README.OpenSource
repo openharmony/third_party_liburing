@@ -3,9 +3,9 @@
         "Name": "liburing",
         "License": "MIT",
         "License File": "LICENSE",
-        "Version Number": "2.7",
+        "Version Number": "2.14",
         "Owner": "mailto:maojingjing1@huawei.com",
         "Upstream URL": "https://github.com/axboe/liburing",
-        "Description": "liburing provides helpers to setup and reardown io_uring instances, and also a simplified interface for applications that don't need (or want) to deal with the full kernel side implementation."
+        "Description": "liburing provides helpers to setup and teardown io_uring instances, and also a simplified interface for applications that don't need (or want) to deal with the full kernel side implementation."
     }
 ]
