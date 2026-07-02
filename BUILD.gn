@@ -50,6 +50,12 @@ action("liburing_configure") {
 }
 
 ohos_shared_library("liburing") {
+  branch_protector_ret = "pac_ret"
+  sanitize = {
+    cfi = true
+    cfi_cross_dso = true
+    debug = false
+  }
   public_configs = [ ":liburing_config" ]
   sources = []
   foreach(src, liburing_source) {
